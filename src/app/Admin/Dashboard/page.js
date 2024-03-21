@@ -7,7 +7,7 @@ import AdminNavbar from '../../Components/AdminNavbar';
 
 
 
-const page = () => {
+const Page = () => {
   const [selectedFile, setSeletedFile] = useState(null);
   const [Data, setData] = useState([]);
 
@@ -75,4 +75,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

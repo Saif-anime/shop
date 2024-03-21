@@ -33,7 +33,7 @@ const VisuallyHiddenInput = styled('input')({
 
 
 
-const page = () => {
+const Page = () => {
   // data come 
   const [open, setOpen] = React.useState(false);
   // const [openedit, setOpenedit] = useState(false);
@@ -425,4 +425,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

@@ -31,7 +31,7 @@ const VisuallyHiddenInput = styled('input')({
 
 
 
-const page = () => {
+const Page = () => {
 
 
   // data come 
@@ -335,4 +335,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page;

@@ -4,7 +4,7 @@ import Cart_Card from '../Components/Cart_Card'
 import SummeryCard from '../Components/SummeryCard'
 import { CartContext } from '../context/CartContext'
 
-const page = () => {
+const Page = () => {
 
     const {cartItems} = useContext(CartContext);
     if (cartItems.length === 0) {
@@ -58,4 +58,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
