@@ -8,7 +8,9 @@ import { ToastContainer } from 'react-toastify';
 
 
 const page = () => {
-  const {addToCart } = useContext(CartContext);
+
+  const {addToCart} = useContext(CartContext)
+
 
 
   return (
