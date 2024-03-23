@@ -27,7 +27,7 @@ const CustomSlider = ({addToCart}) => {
   
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3001/Admin/product');
+        const response = await fetch(`${process.env.API_FETCH_URL}/Admin/product`);
         if (response.ok) {
           const jsonData = await response.json();
           setData(jsonData);
@@ -93,8 +93,8 @@ const CustomSlider = ({addToCart}) => {
 
         {
           Data.map(item => (
-            <SwiperSlide>
-                <Card  product={item} addToCart={addToCart}/>
+            <SwiperSlide key={item._id}>
+                <Card   product={item} addToCart={addToCart}/>
             </SwiperSlide>
 
 

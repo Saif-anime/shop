@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import Image from 'next/image';
 
 
 const Cart_Card = ({cartItems}) => {
@@ -30,7 +31,7 @@ const Cart_Card = ({cartItems}) => {
                                 <tr>
                                     <td className="py-4">
                                         <div className="flex items-center">
-                                            <img className="h-16 w-16 mr-4" src={cartItems.product_Img} alt="Product image" />
+                                            <Image className="h-16 w-16 mr-4" src={cartItems.product_Img} alt="Product image" />
                                             <span className="font-semibold">{cartItems.product_name}</span>
                                         </div>
                                     </td>

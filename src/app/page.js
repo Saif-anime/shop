@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 
 
 
-const page = () => {
+const Page = () => {
 
   const {addToCart} = useContext(CartContext)
 
@@ -139,4 +139,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

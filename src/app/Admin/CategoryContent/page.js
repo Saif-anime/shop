@@ -12,6 +12,7 @@ import { styled } from '@mui/material/styles';
 import Link from 'next/link';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import Image from 'next/image';
 
 
 const VisuallyHiddenInput = styled('input')({
@@ -82,29 +83,23 @@ const Page = () => {
 
 
   useEffect(() => {
-    fetchData();
-  }, [])
-
-
-  // fetching data here 
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch('http://localhost:3001/Admin/Categories');
-      if (response.ok) {
-        const jsonData = await response.json();
-        setData(jsonData);
-        console.log(Data)
-
-      } else {
-        console.error('Failed to fetch data')
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${process.env.API_FETCH_URL}/Admin/Categories`);
+        if (response.ok) {
+          const jsonData = await response.json();
+          setData(jsonData);
+          console.log(jsonData);
+        } else {
+          console.error('Failed to fetch data');
+        }
+      } catch (error) {
+        console.log(error);
       }
-
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
+    };
+  
+    fetchData();
+  }, []);
 
   const handleFileChange = (event) => {
     setSeletedFile(event.target.files[0]);
@@ -123,7 +118,7 @@ const Page = () => {
 
 
     try {
-      const response = await fetch('http://localhost:3001/Admin/Categories', {
+      const response = await fetch(`${process.env.API_FETCH_URL}/Admin/Categories`,{
         method: 'POST',
         body: formData
       })
@@ -231,11 +226,11 @@ const Page = () => {
                 {
 
                   Data.map((item, index) => (
-                    <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
+                    <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row" key={index}>
                       <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">id</span>{index + 1}</td>
                       <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Name</span>{item.title}</td>
                       <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Mobile</span> <div class="relative inline-block shrink-0 rounded-2xl me-3">
-                       <img src={item.CategoryImg} class="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl" alt="" />
+                       <Image src={item.CategoryImg} class="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl" alt="" />
                       </div></td>
                       <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                         <span class="inline-block w-1/3 md:hidden font-bold">Actions</span>

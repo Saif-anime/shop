@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
+import Image from 'next/image';
 import Link from 'next/link';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -108,8 +109,8 @@ const Page = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:3001/Admin/product');
-      const cate = await fetch('http://localhost:3001/Admin/Categories')
+      const response = await fetch(`${process.env.API_FETCH_URL}/Admin/product`);
+      const cate = await fetch(`${process.env.API_FETCH_URL}/Admin/Categories`)
       if (response.ok && cate.ok) {
         const jsonData = await response.json();
         const cate_json = await cate.json();
@@ -141,7 +142,7 @@ const Page = () => {
   // };
   console.log(Data)
 
-  const handleFileChange = (event) => {
+  const handleFileChange = (event) => { 
     setSeletedFile(event.target.files[0]);
 
   };
@@ -164,7 +165,7 @@ const Page = () => {
 
 
     try {
-      const response = await fetch('http://localhost:3001/Admin/product', {
+      const response = await fetch(`${process.env.API_FETCH_URL}/Admin/product`, {
         method: 'POST',
         body: formData
       })
@@ -247,7 +248,7 @@ const Page = () => {
                           {
 
                             CateData.map((item, index) => (
-                              <MenuItem value={item._id}>{item.title}</MenuItem>
+                              <MenuItem key={index} value={item._id}>{item.title}</MenuItem>
                             ))
                           }
 
@@ -381,7 +382,7 @@ const Page = () => {
                 {
 
                   Data.map((item, index) => (
-                    <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
+                    <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row" key={index}>
                       <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">id</span>{index + 1}</td>
                       <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Name</span>{item.product_name}</td>
                       <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Name</span>{item.product_price}</td>
@@ -397,7 +398,7 @@ const Page = () => {
                       <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Mobile</span>
                         <div class="relative inline-block shrink-0 rounded-2xl me-3">
 
-                          <img src={item.product_Img} class="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl" alt="" />
+                          <Image src={item.product_Img} class="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl" alt="" />
                         </div></td>
                       <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                         <span class="inline-block w-1/3 md:hidden font-bold">Actions</span>

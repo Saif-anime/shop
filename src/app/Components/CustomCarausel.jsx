@@ -9,32 +9,35 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
+import Image from 'next/image';
 
 const CustomCarousel = () => {
   const [Data, setData] = useState([]);
 
+
+
+
   useEffect(() => {
-    fetchData();
-  }, [])
-
-
-
-  // fetching data here 
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch('http://localhost:3001/Admin/Banner');
-      if (response.ok) {
-        const jsonData = await response.json();
-        setData(jsonData);
-      } else {
-        console.error('Failed to fetch data')
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${process.env.API_FETCH_URL}/Admin/Banner`);
+        if (response.ok) {
+          const jsonData = await response.json();
+          setData(jsonData);
+          console.log(jsonData);
+        } else {
+          console.error('Failed to fetch data');
+        }
+      } catch (error) {
+        console.log(error);
       }
+    };
+  
+    fetchData();
+  }, []);
 
-    } catch (error) {
-      console.log(error)
-    }
-  }
+
+
 
 
 
@@ -58,9 +61,9 @@ const CustomCarousel = () => {
 
         {
           Data.map(item => (
-            <SwiperSlide>
+            <SwiperSlide key={item._id}>
               <div className='w-full h-96'>
-                <img className="object-fill w-full h-full rounded-t-lg pb-8" src={item.BannerImg} alt="product image" />
+                <Image className="object-fill w-full h-full rounded-t-lg pb-8" src={item.BannerImg} alt="product image" />
               </div>
             </SwiperSlide>
 

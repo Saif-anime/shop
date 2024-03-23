@@ -3,34 +3,32 @@
 import React, { useState, useEffect } from 'react'
 import CustomSlider from '../../Components/CustomSlider';
 import Link from 'next/link';
-
-const page = ({ params }) => {
+import Image from 'next/image';
+const Page = ({ params }) => {
   const [Data, setData] = useState([]);
 
+
+
   useEffect(() => {
-    fetchData();
-  }, [])
-
-  console.log(Data)
-
-
-  // fetching data here 
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`http://localhost:3001/Admin/product/${params.slug}`);
-      if (response.ok) {
-        const jsonData = await response.json();
-        // console.log(jsonData)
-        setData(jsonData);
-      } else {
-        console.error('Failed to fetch data')
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${process.env.API_FETCH_URL}/Admin/product/${params.slug}`);
+        if (response.ok) {
+          const jsonData = await response.json();
+          setData(jsonData);
+          console.log(jsonData);
+        } else {
+          console.error('Failed to fetch data');
+        }
+      } catch (error) {
+        console.log(error);
       }
+    };
 
-    } catch (error) {
-      console.log(error)
-    }
-  }
+    fetchData();
+  }, [params]);
+
+
 
 
 
@@ -41,10 +39,10 @@ const page = ({ params }) => {
 
       {
         Data.map(item => (
-          <section className="text-gray-600 body-font overflow-hidden">
+          <section className="text-gray-600 body-font overflow-hidden" key={item._id}>
             <div className="container px-5 py-24 mx-auto">
               <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={item.product_Img} />
+                <Image alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={item.product_Img} />
                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                   <h2 className="text-sm title-font text-gray-500 tracking-widest">{item.product_name}</h2>
                   <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{item.product_name}</h1>
@@ -150,4 +148,4 @@ const page = ({ params }) => {
   )
 }
 
-export default page
+export default Page

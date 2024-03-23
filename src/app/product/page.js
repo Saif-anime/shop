@@ -3,32 +3,36 @@ import React, { useState, useEffect } from 'react'
 import Card from '../Components/Card'
 import Dropdown from '../Components/Dropdown';
 
-const page = () => {
+const Page = () => {
 
     const [Data, setData] = useState([]);
 
+
+
     useEffect(() => {
-        fetchData();
-    }, [])
-
-
-
-    // fetching data here 
-
-    const fetchData = async () => {
-        try {
-            const response = await fetch('http://localhost:3001/Admin/product');
+        const fetchData = async () => {
+          try {
+            const response = await fetch(`${process.env.API_FETCH_URL}/Admin/product`);
             if (response.ok) {
-                const jsonData = await response.json();
-                setData(jsonData);
+              const jsonData = await response.json();
+              setData(jsonData);
+              console.log(jsonData);
             } else {
-                console.error('Failed to fetch data')
+              console.error('Failed to fetch data');
             }
+          } catch (error) {
+            console.log(error);
+          }
+        };
+      
+        fetchData();
+      }, []);
 
-        } catch (error) {
-            console.log(error)
-        }
-    }
+
+
+
+
+
 
     const dropdowns = [
         {
@@ -435,7 +439,7 @@ const page = () => {
 
                                                         {
                                                             Data.map(item => (
-                                                                <div className='lg:w-1/3 md:w-1/2 p-4 w-full'>
+                                                                <div className='lg:w-1/3 md:w-1/2 p-4 w-full' key={item._id}>
 
                                                                     <Card product={item} />
                                                                 </div>
@@ -498,4 +502,4 @@ Changelog */}
     )
 }
 
-export default page
+export default Page

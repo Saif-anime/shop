@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image';
 
 const page = () => {
     return (
@@ -39,7 +40,7 @@ const page = () => {
                     <p className="text-gray-400">Check your items. And select a suitable shipping method.</p>
                     <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
                         <div className="flex flex-col rounded-lg bg-white sm:flex-row">
-                            <img className="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
+                            <Image className="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
                             <div className="flex w-full flex-col px-4 py-4">
                                 <span className="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
                                 <span className="float-right text-gray-400">42EU - 8.5US</span>
@@ -47,7 +48,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className="flex flex-col rounded-lg bg-white sm:flex-row">
-                            <img className="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
+                            <Image className="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
                             <div className="flex w-full flex-col px-4 py-4">
                                 <span className="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
                                 <span className="float-right text-gray-400">42EU - 8.5US</span>
@@ -123,7 +124,7 @@ const page = () => {
                             <div className="relative flex-shrink-0 sm:w-7/12">
                                 <input type="text" id="billing-address" name="billing-address" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Street Address" />
                                 <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-                                    <img className="h-4 w-4 object-contain" src="https://flagpack.xyz/_nuxt/4c829b6c0131de7162790d2f897a90fd.svg" alt="" />
+                                    <Image className="h-4 w-4 object-contain" src="https://flagpack.xyz/_nuxt/4c829b6c0131de7162790d2f897a90fd.svg" alt="" />
                                 </div>
                             </div>
                             <select type="text" name="billing-state" className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500">

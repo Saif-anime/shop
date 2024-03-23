@@ -4,6 +4,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Link from 'next/link';
 import Dropdown from "./Dropdown";
 import { CartContext } from '../context/CartContext';
+import Image from 'next/image';
 
 
 
@@ -58,7 +59,7 @@ const Navbar = () => {
                         </svg>
                         <span className="font-bold text-red-700 ml-3 text-xl">Shoping</span> */}
 
-                        <img src='./logo.png' />
+                        <Image src='./logo.png' height={"100px"} width={"100px"} alt='logo'/>
                     </Link>
                     <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center cursor-pointer">
 

@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link'
 
-
+import Image from 'next/image';
 
 const Card = ({ product,  addToCart}) => {
 
@@ -18,7 +18,7 @@ const Card = ({ product,  addToCart}) => {
             <div className="bg-white shadow-md rounded " key={product._id}>
                 <Link href={`/product/${product.slug}`}>
                     <div className='w-full h-80'>
-                        <img className="object-fill w-full h-full rounded-t-lg pb-8" src={product.product_Img} alt="product image" />
+                        <Image className="object-fill w-full h-full rounded-t-lg pb-8" src={product.product_Img} alt="product image" />
                     </div>
                 </Link>
                 <div className="px-5 pb-5">

@@ -40,7 +40,7 @@ const Page = () => {
 
                                 {
                                     cartItems.map(item => (
-                                        <Cart_Card cartItems={item}/>
+                                        <Cart_Card key={item._id} cartItems={item}/>
                                     ))
                                 }
                                

@@ -12,6 +12,7 @@ import { styled } from '@mui/material/styles';
 import Link from 'next/link';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import Image from 'next/image';
 
 
 const VisuallyHiddenInput = styled('input')({
@@ -94,7 +95,7 @@ const Page = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:3001/Admin/Banner');
+      const response = await fetch(`${process.env.API_FETCH_URL}/Admin/Banner`);
       if (response.ok) {
         const jsonData = await response.json();
         setData(jsonData);
@@ -126,7 +127,7 @@ const Page = () => {
 
 
     try {
-      const response = await fetch('http://localhost:3001/Admin/Banner', {
+      const response = await fetch(`${process.env.API_FETCH_URL}/Admin/Banner`, {
         method: 'POST',
         body: formData
       })
@@ -303,11 +304,11 @@ const Page = () => {
                 {
 
                   Data.map((item, index) => (
-                    <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
+                    <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row" key={index}>
                       <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">id</span>{index + 1}</td>
                       <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Name</span>{item.title}</td>
                       <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Mobile</span> <div class="relative inline-block shrink-0 rounded-2xl me-3">
-                        <Link href={item.BannerLink ? item.BannerLink : "No Banner Link"}> <img src={item.BannerImg} class="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl" alt="" /></Link>
+                        <Link href={item.BannerLink ? item.BannerLink : "No Banner Link"}> <Image  src={item.BannerImg} class="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl" alt="" /></Link>
                       </div></td>
                       <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                         <span class="inline-block w-1/3 md:hidden font-bold">Actions</span>

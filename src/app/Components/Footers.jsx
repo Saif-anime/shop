@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image';
 
 const Footers = () => {
   return (
@@ -75,7 +76,7 @@ const Footers = () => {
           <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
             <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
              
-            <img src='./logo.png'/>
+            <Image src='./logo.png' width={"44px"} height={"50px"} alt='logo'/>
             </a>
             <p class="text-sm text-gray-400 sm:ml-6 sm:mt-0 mt-4">© 2020 Tailblocks —
               <a href="https://twitter.com/knyttneve" class="text-gray-500 ml-1" target="_blank" rel="noopener noreferrer">@knyttneve</a>
